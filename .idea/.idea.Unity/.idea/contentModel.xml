@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2017.3/system/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_Unity.863365804.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Champmode" t="Include">
+          <e p="Champmodeobjcreator.cs" t="Include" />
+        </e>
+        <e p="CrossScene" t="Include">
+          <e p="CrossSceneVars.cs" t="Include" />
+          <e p="FPScounter.cs" t="Include" />
+          <e p="Optionsandstatus.cs" t="Include" />
+        </e>
+        <e p="Missile" t="Include">
+          <e p="Missilecontroller.cs" t="Include" />
+          <e p="Missileplayerstatus.cs" t="Include" />
+          <e p="Missilestatuscontroller.cs" t="Include" />
+          <e p="Missileturretcontroller.cs" t="Include" />
+          <e p="Targetercontroller.cs" t="Include" />
+        </e>
+        <e p="Obstacle" t="Include">
+          <e p="Objectdestructioncontroller.cs" t="Include" />
+          <e p="Obstaclecreator.cs" t="Include" />
+          <e p="autodestruct.cs" t="Include" />
+        </e>
+        <e p="Plane of destruction" t="Include">
+          <e p="Planeofdestructioncontroller.cs" t="Include" />
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Title" t="Include">
+          <e p="IntroGUI.cs" t="Include" />
+          <e p="TitleGUI.cs" t="Include" />
+          <e p="titleGUIscript.cs" t="Include" />
+        </e>
+        <e p="Upgrades" t="Include">
+          <e p="Magnetcontroller.cs" t="Include" />
+          <e p="Mediumrocketcontroller.cs" t="Include" />
+          <e p="Unfuckerscript.cs" t="Include" />
+          <e p="largerocketcontroller.cs" t="Include" />
+          <e p="smallrocketcontroller.cs" t="Include" />
+        </e>
+        <e p="Upgradescreen" t="Include">
+          <e p="ArmorUpgradeScript.cs" t="Include" />
+          <e p="BoostRocketUpgradeScript.cs" t="Include" />
+          <e p="CannonUpgradeScript.cs" t="Include" />
+          <e p="Magnetupgradescript.cs" t="Include" />
+          <e p="Thrusterupgradescript.cs" t="Include" />
+          <e p="Trackerupgradescript.cs" t="Include" />
+          <e p="UpgradeGUI.cs" t="Include" />
+          <e p="Vectoredthrustupgradescript.cs" t="Include" />
+          <e p="alumarmorupgradescript.cs" t="Include" />
+          <e p="basicupgradescript.cs" t="Include" />
+          <e p="largecannonupgradescript.cs" t="Include" />
+          <e p="largerocketupgradescript.cs" t="Include" />
+          <e p="medcannonupgradescript.cs" t="Include" />
+          <e p="mediumrocketupgradescript.cs" t="Include" />
+          <e p="smallcannonupgradescript.cs" t="Include" />
+          <e p="smallrocketupgradescript.cs" t="Include" />
+          <e p="steelarmorupgradescript.cs" t="Include" />
+          <e p="titanarmorupgradescript.cs" t="Include" />
+          <e p="trackerscript.cs" t="Include" />
+          <e p="unfuckerupgradescript.cs" t="Include" />
+        </e>
+        <e p="camer" t="Include">
+          <e p="Cameracontroller.cs" t="Include" />
+          <e p="Rearcameracontroller.cs" t="Include" />
+        </e>
+        <e p="chaingun" t="Include">
+          <e p="Chaingunscript.cs" t="Include" />
+          <e p="chainguncontroller.cs" t="Include" />
+          <e p="shootercontroller.cs" t="Include" />
+        </e>
+        <e p="coins" t="Include">
+          <e p="coincontroller.cs" t="Include" />
+        </e>
+        <e p="laser turret" t="Include">
+          <e p="cannoncontroller.cs" t="Include" />
+          <e p="lasercontroller.cs" t="Include" />
+        </e>
+        <e p="spaceship" t="Include">
+          <e p="Collidercontroller.cs" t="Include" />
+          <e p="Guncontroller.cs" t="Include" />
+          <e p="Pausecontroller.cs" t="Include" />
+          <e p="Plasmacontroller.cs" t="Include" />
+          <e p="Spaceshipcontroller.cs" t="Include" />
+          <e p="Spaceshipstatuscontroller.cs" t="Include" />
+          <e p="Thrustvectorercontroller.cs" t="Include" />
+        </e>
+        <e p="splitcube" t="Include">
+          <e p="splitcubecontroller.cs" t="Include" />
+        </e>
+        <e p="thruster shader.shader" t="Include" />
+        <e p="tunnels" t="Include">
+          <e p="tunnelcontroller.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="Unity.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

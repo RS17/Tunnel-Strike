@@ -1,7 +1,7 @@
 # Tunnel-Strike
 Unity 3D space shooter game.  Hard to control.
 
-This is a game I made in Unity prior to becoming a software developer. The textures got a bit messed up when upgrading to the latest version of Unity after 5 years or so, which is why it's so dark.  There's also some experimental assets from a chain gun-based game that I was developing hidden in there somewhere.
+This is a game I made in Unity prior to becoming a software developer. The textures got a bit messed up when upgrading to the latest version of Unity after 5 years or so, which is why it's so dark.  There's also some experimental assets from a chain gun-based game that I was thinking of developing hidden in there somewhere.
 
 It involves controlling a ship and maneuvering it down a tunnel with obstacles, missiles, and turrets.
 

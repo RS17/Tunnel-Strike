@@ -5,6 +5,8 @@ This is a game I made in Unity prior to becoming a software developer.
 
 It involves controlling a ship and maneuvering it down a tunnel with obstacles, missiles, and turrets.
 
+A version of this can be played on my old Kongregate account if you have a Unity plugin: https://www.kongregate.com/games/polymathic/tunnel-strike
+
 Controls:  
 
 WASD – Control spaceship  

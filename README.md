@@ -15,3 +15,7 @@ Tab – Reorient ship (need reorientator)
 P – Pause/See instructions and options  
 R – Rear view camera  
 1-5 – Cycle through forward camera views  
+
+Created by Ravi Suri
+rsuriprog@gmail.com
+MIT license

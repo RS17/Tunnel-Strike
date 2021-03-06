@@ -29,7 +29,7 @@ public class mediumrocketupgradescript : MonoBehaviour {
 			if (CrossSceneVars.Money >= Price){
 				CrossSceneVars.Money = CrossSceneVars.Money - Price;
 				CrossSceneVars.Rocket2 = 1;
-				UpgradeGUI.LastMessage = "Medium rocket purchased for $1000";
+				UpgradeGUI.LastMessage = "Medium rocket purchased for $" + Price;
 				CrossSceneVars.Rocket = 2;
 			}
 			else{

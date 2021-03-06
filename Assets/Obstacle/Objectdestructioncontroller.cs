@@ -23,14 +23,12 @@ public class Objectdestructioncontroller : MonoBehaviour {
 		if (Optionsandstatus.Champmodeunlocked == 0 && Time.time-deathtime >1 && Exptype == 1 && CrossSceneVars.Coreexist==2){
 				Optionsandstatus.Champmodeunlocked = 1;
 				PlayerPrefs.SetInt("Champmodeunlocked", 1);
-				Application.ExternalCall("kongregate.stats.submit","CoreDestroyed",1);
 				Pausecontroller.showGUI = 0;
 				CrossSceneVars.Paused = 1;
 				Time.timeScale = 0;
 				CrossSceneVars.ShowcoreGUI = 1;
 				Destroy(gameObject);
 			}
-	
 	}
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Player"){
@@ -62,7 +60,7 @@ public class Objectdestructioncontroller : MonoBehaviour {
 			if (Exptype == 1){// && CrossSceneVars.Coreexist == 1){ //ie its the core and it ain't blown up yet
 				deathtime = Time.time;
 				
-				Coreexplosion.active = true;
+				Coreexplosion.active = true; // this is the one attached to the Plane of destruction
 				CrossSceneVars.Coretime = Time.time;
 				if (CrossSceneVars.Coreexist == 1){
 					GameObject coreexp = (GameObject)Instantiate(Coreexplosion2, transform.position, Quaternion.identity);

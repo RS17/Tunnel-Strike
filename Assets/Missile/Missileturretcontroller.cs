@@ -25,7 +25,8 @@ public class Missileturretcontroller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (CrossSceneVars.missilecount <5 && CrossSceneVars.Gameover == 0){
-			if((transform.position.z - spaceship.transform.position.z)<-100 && (transform.position.z - spaceship.transform.position.z)>-1000){
+			float spaceshipdist = spaceship.transform.position.z - transform.position.z;
+			if(spaceshipdist > 300 && spaceshipdist < 4000){
 				if ((Time.time - Newtime) > Fireinterval){
 					CrossSceneVars.missilecount++;
 					if(transform.position.x<0){

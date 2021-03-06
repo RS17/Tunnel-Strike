@@ -9,6 +9,7 @@ public class TitleGUI : MonoBehaviour {
 	
 	// OnGUI is called once per frame
 	void OnGUI () {
+
 		if(GUI.Button(new Rect(65,410,200,30), "START")){
 			Application.LoadLevel(1);
 		}

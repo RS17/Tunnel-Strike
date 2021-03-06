@@ -58,21 +58,18 @@ public class UpgradeGUI : MonoBehaviour {
 			Instantiate(CrossSceneVarHolder, new Vector3(0,0,0), Quaternion.identity);
 		}
 		//add anything that's already been added
-		if (CrossSceneVars.Rocket == 1){
-			srocket.active = true;
-			srocketleft.active=true;
-			srocketright.active=true;
-		}
-		if (CrossSceneVars.Rocket == 2){
-			mrocket.active = true;
-			mrocketleft.active=true;
-			mrocketright.active=true;
-		}
-		if (CrossSceneVars.Rocket == 3){
-			lrocket.active = true;
-			lrocketleft.active=true;
-			lrocketright.active=true;
-		}
+
+		srocket.active = CrossSceneVars.Rocket == 1;
+		srocketleft.active=CrossSceneVars.Rocket == 1;
+		srocketright.active=CrossSceneVars.Rocket == 1;
+
+		mrocket.active = CrossSceneVars.Rocket == 2;
+		mrocketleft.active=CrossSceneVars.Rocket == 2;
+		mrocketright.active=CrossSceneVars.Rocket == 2;
+	
+		lrocket.active = CrossSceneVars.Rocket == 3;
+		lrocketleft.active=CrossSceneVars.Rocket == 3;
+		lrocketright.active=CrossSceneVars.Rocket == 3;
 		if (CrossSceneVars.Armor == 1){
 			spaceshipmesh.GetComponent<Renderer>().material = steelarmor;
 		}
@@ -82,18 +79,15 @@ public class UpgradeGUI : MonoBehaviour {
 		if (CrossSceneVars.Armor == 3){
 			spaceshipmesh.GetComponent<Renderer>().material = titanarmor;
 		}
-		if (CrossSceneVars.Guns == 1){
-			scannonleft.active=true;
-			scannonright.active=true;
-		}
-		if (CrossSceneVars.Guns == 2){
-			mcannonleft.active=true;
-			mcannonright.active=true;
-		}
-		if (CrossSceneVars.Guns == 3){
-			lcannonleft.active=true;
-			lcannonright.active=true;
-		}
+
+		scannonleft.active=CrossSceneVars.Guns == 1;
+		scannonright.active=CrossSceneVars.Guns == 1;
+
+		mcannonleft.active=CrossSceneVars.Guns == 2;
+		mcannonright.active=CrossSceneVars.Guns == 2;
+	
+		lcannonleft.active=CrossSceneVars.Guns == 3;
+		lcannonright.active=CrossSceneVars.Guns == 3;
 		if (CrossSceneVars.Vectoredthrustactive == 1){
 			VectoredThrust.active = true;
 		}

@@ -52,18 +52,6 @@ public class Missilecontroller : MonoBehaviour {
 			if (Ypos >Screen.height-10){
 				Ypos = Screen.height-10;
 			}
-			//if(Xpos>Ypos && Ypos<Screen.height/2){
-			//	Ypos = 0;
-			//}
-			//else if (Xpos>Ypos){
-			//	Ypos = Screen.height;
-			//}
-			//else if (Xpos>Screen.width/2){
-			//	Xpos = Screen.width;
-			//}
-			//else {
-			//	Xpos = 0;
-			//}
 			Spaceshipdistance = Vector3.Distance(Spaceship.transform.position, transform.position);
 			if (Spaceshipdistance > 1000){
 				Spaceshipdistance = 1000;
@@ -75,8 +63,7 @@ public class Missilecontroller : MonoBehaviour {
 			GUI.color = new Color(1, Colorshift, Colorshift, 1);
 			Rect MTRect = new Rect(Xpos-10,Ypos-10, 20,20);
 			GUI.DrawTexture(MTRect, Missiletracker);
-			//missile tracker distance number: it works, but I don't think it's helpful because you can't read it during game
-			//GUI.Label(new Rect(Xpos, Ypos+30, 40, 20), System.String.Format("{0}", Spaceshipdistance));
+
 		}
 	}
 	
@@ -154,7 +141,18 @@ public class Missilecontroller : MonoBehaviour {
 		//Missile forward movement
 		//	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z+1.0f);
 			Vector3 Away_from_exhaust = (transform.position - Exhaust.transform.position).normalized; 
-			GetComponent<Rigidbody>().AddForce(Away_from_exhaust*Thrust);
+			// thrust reduction - turn off thrust if going to fast and near ship
+			float nearThrust = Thrust;
+			if( Control != "Manual"){
+				Spaceshipdistance = Vector3.Distance(Spaceship.transform.position, transform.position);
+				float Spaceshipdelta =  GetComponent<Rigidbody>().velocity.z - Spaceship.GetComponent<Rigidbody>().velocity.z;
+				
+				if( Spaceshipdelta > 100 && Spaceshipdistance < 100){
+				
+					nearThrust -= Spaceshipdelta/2;
+				}
+			}
+			GetComponent<Rigidbody>().AddForce(Away_from_exhaust*nearThrust);
 			if(Time.time - Starttime > fuel){
 				Thrust = 0;
 			}
@@ -169,7 +167,7 @@ public class Missilecontroller : MonoBehaviour {
 				CrossSceneVars.Gameover = 1;
 				CrossSceneVars.Finaldist = (int) transform.position.z;
 			}
-			Destroy(gameObject);//must be above instantiate for this to work, otherwise error kills ontrigger
+			Destroy(gameObject, 0.5f);//must be above instantiate for this to work, otherwise error kills ontrigger
 			Collider[] colliders = Physics.OverlapSphere (transform.position, 10.0f);
 			foreach (Collider hit in colliders) {
 				if (!hit){

@@ -27,15 +27,17 @@ public class Plasmacontroller : MonoBehaviour {
 				if (!hit){
 					continue;
 				}
-				if (hit.GetComponent<Rigidbody>().tag == "Player"){
-					continue;
-				}
+				if(hit.GetComponent<Rigidbody>() != null){
+					if (hit.GetComponent<Rigidbody>().tag == "Player"){
+						continue;
+					}
 
-				if (hit.GetComponent<Rigidbody>()){
-					hit.GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, radius);
+					if (hit.GetComponent<Rigidbody>()){
+						hit.GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, radius);
+					}
 				}
-			GameObject explosion = (GameObject)Instantiate(Plasmaexplosion, transform.position, Quaternion.identity);
-			//explosion.Emit();
+				GameObject explosion = (GameObject)Instantiate(Plasmaexplosion, transform.position, Quaternion.identity);
+				//explosion.Emit();
 			}
 	//	}
 		

@@ -4,14 +4,14 @@ using System.Collections;
 public class CrossSceneVars : MonoBehaviour {
 	
 	public static int Money = 0;
-	public static int Rocket = 0;
-	public static int Rocket1 = 0;
+	public static int Rocket = 1;
+	public static int Rocket1 = 1;
 	public static int Rocket2 = 0;
 	public static int Rocket3 = 0;
 	public static int Vectoredthrust = 0;
 	public static int Vectoredthrustactive = 0;
-	public static int Guns = 0;
-	public static int Guns1 = 0;
+	public static int Guns = 1;
+	public static int Guns1 = 1;
 	public static int Guns2 = 0;
 	public static int Guns3 = 0;
 	public static int Armor1 = 1;
@@ -56,14 +56,14 @@ public class CrossSceneVars : MonoBehaviour {
 	void OnLevelWasLoaded(int level){
 		if (level == 0){ //sets defaults at title screen
 			Money = 0;
-			Rocket = 0;
-			Rocket1 = 0;
+			Rocket = 1;
+			Rocket1 = 1;
 			Rocket2 = 0;
 			Rocket3 = 0;
 			Vectoredthrust = 0;
 			Vectoredthrustactive = 0;
-			Guns = 0;
-			Guns1 = 0;
+			Guns = 1;
+			Guns1 = 1;
 			Guns2 = 0;
 			Guns3 = 0;
 			Armor1 = 1;
@@ -102,6 +102,7 @@ public class CrossSceneVars : MonoBehaviour {
 			Upgrademode = 0;
 		}
 		if (level == 4){
+			Debug.Log("In Champ Mode");
 			Armorlevel = 10000;
 			Missiletracker = 1;
 			Coreexist = 2;
@@ -179,26 +180,9 @@ public class CrossSceneVars : MonoBehaviour {
 	void Update () {
 		//if normal mode
 		if (Gameover == 1 && Champmode == 0){
-		//	if(Finaldist < 0){
-		//		//add distance bonus
-		//		Money = Money + bonus;
 				finaldistmoney = Finaldist/40;
 				Money = Money+bonus+finaldistmoney;
 				Gameover =2;
-		//		return;
-		//	}
-		//	if (Finaldist > 1000){
-		//		Finaldist = Finaldist - 1000;
-		//		Money = Money+50;
-		//	}
-		//	else if (Finaldist <= 1000 && Finaldist > 100) {	
-		//		Finaldist = Finaldist - 100;
-		//		Money = Money+5;
-		//	}
-		//	else if (Finaldist <= 100) {
-		//		Finaldist = Finaldist - 20;
-		//		Money = Money +1;
-		//	}
 		}
 		if (Gameover == 3 && Champmode == 0){
 			Application.LoadLevel(2);

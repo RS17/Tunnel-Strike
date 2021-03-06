@@ -13,10 +13,10 @@ public class Spaceshipstatuscontroller : MonoBehaviour {
 	public GameObject Closefixed;
 	public GameObject Farfixed;
 	public GameObject Cockpit;
+	public GameObject ShipExplosion;
 	public float life = 0;
 	private Vector3 objectpos;
 	//private int Gameover = 0;
-	public GameObject Missileexplosion;
 	public GameObject Spaceshipmesh;
 	public GameObject Thruster;
 	public float deathtime = 0;
@@ -79,7 +79,7 @@ public class Spaceshipstatuscontroller : MonoBehaviour {
 						CrossSceneVars.Winnerisyou = 0;
 						Destroy(gameObject);
 						
-						GameObject explosion = (GameObject)Instantiate(Missileexplosion, transform.position, Quaternion.identity);
+						GameObject explosion = (GameObject)Instantiate(ShipExplosion, transform.position, Quaternion.identity);
 					}
 				}
 			}
@@ -132,16 +132,16 @@ public class Spaceshipstatuscontroller : MonoBehaviour {
 				CrossSceneVars.Winnerisyou = 1;
 			}
 			//NOTE: Below is old script for getting stuck that caused problems, along with above "Oldtime" script.  Getting stuck was rare enough that this was determined to be unnecessary because it was causing problems.
-			//if(Mathf.Abs(Zdelta) <=1){
-			//	if( stuckcount > 10){
-			//		transform.position = new Vector3(0, 150.0f, transform.position.z);
-			//		stuckcount = 0;
-			//	}
-			//	stuckcount++;
-			//}
-			//else{
-			//	stuckcount = 0;
-			//}
+			if(Mathf.Abs(Zdelta) <=1){
+				if( stuckcount > 10){
+					transform.position = new Vector3(0, 150.0f, transform.position.z);
+					stuckcount = 0;
+				}
+				stuckcount++;
+			}
+			else{
+				stuckcount = 0;
+			}
 			// position corrector
 			if(transform.position.x >=200||transform.position.x<=-200||transform.position.y>=310||transform.position.y<=-10){
 				transform.position = new Vector3(0, 150.0f, transform.position.z);
@@ -193,13 +193,6 @@ public class Spaceshipstatuscontroller : MonoBehaviour {
 			Cockpit.active = true;
 		}
 		
-			
-			
-		//if (Gameover == 1){
-		//	if ((Time.time - deathtime) > 5){
-		//		Application.LoadLevel(2);
-		//	}
-		//}
 		if (hitby == 1){ //ie just got hit by a laser
 			life = life-40;
 			hitby = 0;
@@ -221,9 +214,26 @@ public class Spaceshipstatuscontroller : MonoBehaviour {
 			collisionforce = GetComponent<Rigidbody>().GetRelativePointVelocity(objectpos);
 			life = life-(int) (collisionforce.magnitude*.0002);
 			ContactPoint contact = other.contacts[0];
+			Debug.Log("Exploding");
 			GetComponent<Rigidbody>().AddExplosionForce(500, contact.point, 100);
 			GameObject collision = (GameObject)Instantiate(Collisionsound, contact.point, Quaternion.identity);
-
+			// point towards center to avoid getting stuck on wall
+			/*float limitedy = transform.localPosition.y;
+			if(transform.localPosition.y > 100){
+				limitedy = Mathf.Clamp(transform.rotation.eulerAngles.y, 180, 345);
+			} else {
+				limitedy = Mathf.Clamp(transform.rotation.eulerAngles.y, 15, 180);
+			}
+			float limitedx = transform.localPosition.x;
+			if(transform.localPosition.x > 0){
+				Debug.Log("forcing left from " + transform.rotation.eulerAngles.x );
+				limitedx = Mathf.Clamp(transform.rotation.eulerAngles.x, 15, 180);
+				Debug.Log("to" + transform.rotation.eulerAngles.x);
+			} else {
+				Debug.Log("forcing right");
+				limitedx =  Mathf.Clamp(transform.rotation.eulerAngles.x, 180, 345);
+			}
+			transform.eulerAngles = new Vector3(limitedx, limitedy, transform.rotation.eulerAngles.z);*/
 		}
 		// below wasn't working, so replaced with public static "hitby" variable in void update
 		//if (other.gameObject.tag == "Laser"){
@@ -241,17 +251,12 @@ public class Spaceshipstatuscontroller : MonoBehaviour {
 			Cockpit.active = false;
 			CrossSceneVars.deathtime = Time.time;
 			CrossSceneVars.Finaldist = (int) transform.position.z;
-			Destroy(gameObject);
 			CrossSceneVars.Gameover = 1;
+			Destroy(gameObject);
 			CrossSceneVars.bonus = (int) (CrossSceneVars.Finaldist*(transform.position.z/4000000));// is used above in money adder in crossscenevars
 			CrossSceneVars.lastdist = (int) CrossSceneVars.Finaldist; // is used in money adder
-			
-			GameObject explosion = (GameObject)Instantiate(Missileexplosion, transform.position, Quaternion.identity);
-			//explosion.Emit();
-			
-			//Spaceshipmesh.active = false;
-			//Thruster.active = false;
-			//rigidbody.isKinematic = true;
+			GameObject explosion = (GameObject)Instantiate(ShipExplosion, transform.position, Quaternion.identity);
+
 			
 			//do not put anything under here, will not get executed.
 		}

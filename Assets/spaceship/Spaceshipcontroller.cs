@@ -26,13 +26,13 @@ public class Spaceshipcontroller : MonoBehaviour {
 	public GameObject Rocketdot;
 	public GameObject Thrusterdot;
 	public GameObject Trackerdot;
-	public GameObject Unfuckerdot;
+	public GameObject Undoerdot;
 	public GameObject Spotlight;
 	private Vector3 Origthrusterpos;
 	public GameObject Thrustvectorer;
 	private int VTenable = 0;
 	public int Champmode=0;
-	public int Upgradescreen = 0;
+	public bool Upgradescreen = false;
 	
 	
 	
@@ -49,31 +49,32 @@ public class Spaceshipcontroller : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		if (level == 2){
+			Debug.Log("Loading 2");
 			transform.position = new Vector3(0,0,0);
 			GetComponent<Rigidbody>().isKinematic = true;
 			GetComponent<Spaceshipstatuscontroller>().enabled = false;
-			Upgradescreen = 1;
+			Upgradescreen = true;
 		}
 		if (level == 3){
+			Debug.Log("loading 3");
 			transform.position = new Vector3(0, 100, 0);
 			transform.eulerAngles = new Vector3(0,0,0);
 			GetComponent<Rigidbody>().isKinematic = false;
 			GetComponent<Spaceshipstatuscontroller>().enabled = true;
 			GetComponent<Obstaclecreator>().enabled=true;
 			GetComponent<tunnelcontroller>().enabled=true;
-			//GetComponent<CapsuleCollider>().enabled=true;
+			GetComponent<CapsuleCollider>().enabled=true;
 			Armordot.active=false;
-			//Guidancedot.active = false;
 			Gunsdot.active = false;
 			Ramdot.active = false;
 			Rocketdot.active = false;
 			Thrusterdot.active = false;
 			Origthrusterpos = Thruster.transform.localPosition;
 			VTenable = 1;
-			GetComponent<Collider>().enabled = true;
-			Unfuckerdot.active = false;
+			Undoerdot.active = false;
 			Trackerdot.active = false;
-			Upgradescreen = 0;
+			Upgradescreen = false;
+			Debug.Log("Upgrade screen is " + Upgradescreen);
 			
 		}
 		if (level == 4){
@@ -197,17 +198,17 @@ public class Spaceshipcontroller : MonoBehaviour {
 			
 		// Backward movement preventer.  Must be less than 90 degress maxroation to work.
 			//limitedy += Input.GetAxis("Horizontal");
-			if(transform.rotation.eulerAngles.x < 180){
-				limitedx = Mathf.Clamp(transform.rotation.eulerAngles.x, 0, 75);
+			if(transform.rotation.eulerAngles.x < 180 && !Upgradescreen){
+				limitedx = Mathf.Clamp(transform.rotation.eulerAngles.x, 0, Maxrotation);
 			}
 			else{
-				limitedx = Mathf.Clamp(transform.rotation.eulerAngles.x, 275, 360);
+				limitedx = Mathf.Clamp(transform.rotation.eulerAngles.x, 360-Maxrotation, 360);
 			}
-			if(transform.rotation.eulerAngles.y < 180){
-				limitedy = Mathf.Clamp(transform.rotation.eulerAngles.y, 0, 75);
+			if(transform.rotation.eulerAngles.y < 180 && !Upgradescreen){
+				limitedy = Mathf.Clamp(transform.rotation.eulerAngles.y, 0, Maxrotation);
 			}
 			else{
-				limitedy = Mathf.Clamp(transform.rotation.eulerAngles.y, 275, 360);
+				limitedy = Mathf.Clamp(transform.rotation.eulerAngles.y, 360-Maxrotation, 360);
 			}
 			//if(transform.rotation.eulerAngles.z < 180){
 			//	limitedz = Mathf.Clamp(transform.rotation.eulerAngles.z, 0, 80);
@@ -216,46 +217,14 @@ public class Spaceshipcontroller : MonoBehaviour {
 			//	limitedz = Mathf.Clamp(transform.rotation.eulerAngles.z, 280, 360);
 			//}
 	
-			if (Upgradescreen == 0){
+			if (!Upgradescreen){
 				transform.eulerAngles = new Vector3(limitedx, limitedy, transform.rotation.eulerAngles.z);
 			}
 			
-			//Below sorta works, but applying force sucks because leads to weird behavior and inexactness.
-			//Maybe can also use spotlight like missile targeter and do that.  But first need to sense world rotation.
-			//if(Input.GetKey(KeyCode.E)){
-				//transform.position = new Vector3(0,0, -2000);
-			//if((transform.rotation.eulerAngles.x > Maxrotation) && (transform.rotation.eulerAngles.x < 180)){
-			//	rigidbody.AddRelativeTorque(Pitchbase*500,0,0);
-			//	transform.rotation.eulerAngles.x = Oldrotationx;
-			//}
-			//if((transform.rotation.eulerAngles.x < 360-Maxrotation) && (transform.rotation.eulerAngles.x > 180)){
-			//	rigidbody.AddRelativeTorque(0-Pitchbase*500,0,0);
-			//	transform.rotation.eulerAngles.x = Oldrotationx;
-	
-			//}
-			//if((transform.rotation.eulerAngles.y > Maxrotation) && (transform.rotation.eulerAngles.y < 180)){
-			//	rigidbody.AddRelativeTorque(0,Pitchbase*500,0);
-			//	transform.rotation.eulerAngles.y = Oldrotationy;
-	
-			//}
-			//if((transform.rotation.eulerAngles.y < 360-Maxrotation) && (transform.rotation.eulerAngles.y > 180)){
-			//	rigidbody.AddRelativeTorque(0,0-Pitchbase*500,0);
-			//	transform.rotation.eulerAngles.y = Oldrotationy;
-	
-			//}
-			//Oldrotationx = transform.rotation.eulerAngles.x;
-			//Oldrotationy = transform.rotation.eulerAngles.y;
+
 			
-		// Thrust booster
-			//if(Input.GetKey(KeyCode.LeftShift)){
-			//	Boost = 1000;
-			//}
-			//else{
-			//	Boost = 0;
-			//}
-				
+		
 		//Player forward movement
-		//	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z+1.0f);
 			Vector3 Away_from_thrusters = (transform.position - Thruster.transform.position).normalized; 
 			GetComponent<Rigidbody>().AddForce(Away_from_thrusters*(Thrust+Boost));
 			float Unispeed = GetComponent<Rigidbody>().velocity.magnitude;

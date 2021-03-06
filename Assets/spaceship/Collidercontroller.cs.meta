@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: ae8e5102cbb2a5a40b8224f4e8f27f88
-timeCreated: 18446744011573954816
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Missileexplosion: {instanceID: 0}
+  - gameObj: {fileID: 242883372009084624, guid: 23d746c7d2f41a015939b9899b98f5db,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

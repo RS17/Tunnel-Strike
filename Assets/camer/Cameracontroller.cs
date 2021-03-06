@@ -74,7 +74,7 @@ public class Cameracontroller : MonoBehaviour {
 				direction_to_spaceship = (Missile.transform.position - transform.position).normalized;
 				transform.position = new Vector3(Missile.transform.position.x, Missile.transform.position.y, (Missile.transform.position.z-60.0f));
 			}
-			else{
+			else if(Spaceship != null){
 				direction_to_spaceship = (Spaceship.transform.position - transform.position).normalized;
 				transform.position = new Vector3(Spaceship.transform.position.x, Spaceship.transform.position.y, (Spaceship.transform.position.z-followdist));
 			}

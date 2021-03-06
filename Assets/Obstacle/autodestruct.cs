@@ -2,20 +2,17 @@ using UnityEngine;
 using System.Collections;
 
 public class autodestruct : MonoBehaviour {
-	private float Starttime;
+	public int lifespan = 3;
 
 	// Use this for initialization
 	void Start () {
-		Starttime = Time.time;
+		Destroy(gameObject, lifespan);
 		
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time - Starttime > 3){
-			Destroy(gameObject);
-		}
-	
+
 	}
 }

@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections;
-
+// NOTE: I don't think this is used anywhere
 public class Collidercontroller : MonoBehaviour {
 	public int life = 1000;
 	private Vector3 objectpos;
 	private Vector3 collisionforce;
-	public GameObject Missileexplosion;
+	public ParticleSystem Missileexplosion;
 	
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,8 @@ public class Collidercontroller : MonoBehaviour {
 	void Update () {
 	}
 	void OnCollisionEnter(Collision collision){
-		life=life-10;
+		Debug.Log("in this one");
+		life=life-10; 
 		if (GetComponent<Collider>().gameObject.tag == "Player"){
 			return;
 		}
@@ -32,11 +33,8 @@ public class Collidercontroller : MonoBehaviour {
 			life = life - 100;
 		}
 		if (life <1){
-			//Gameover = 1;
-			//player explosion no longer works after Unity upgrade...
-			//ParticleEmitter explosion = (ParticleEmitter)Instantiate(Missileexplosion, transform.position, Quaternion.identity);
-			//explosion.Emit();
-			//Spaceshipmesh.active = false;
+			
+			CrossSceneVars.Gameover=1;
 		}
 	}
 }
